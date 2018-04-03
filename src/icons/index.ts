@@ -1,1 +1,1 @@
-// export {default as menu} from './menu.svg';
+export {default as menu} from './menu.svg';
