@@ -1,6 +1,8 @@
 import * as React from 'react';
 import {Button} from '@shopify/polaris';
 import {menu} from 'icons';
+import * as styles from './TopBar.scss';
+console.log(styles.TopBar);
 
 interface Props {
   onNavToggle?(): void;
@@ -8,6 +10,10 @@ interface Props {
 
 export default class TopBar extends React.PureComponent<Props, never> {
   render() {
-    return <Button primary onClick={this.props.onNavToggle} icon={menu} />;
+    return (
+      <div className={styles.TopBar}>
+        <Button primary onClick={this.props.onNavToggle} icon={menu} />
+      </div>
+    );
   }
 }

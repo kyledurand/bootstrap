@@ -99,13 +99,22 @@ module.exports = {
             loader: '@shopify/images/icon-loader'
           },
           {
-            test: /\.css$/,
+            test: /\.(css|scss)$/,
             use: [
               require.resolve('style-loader'),
               {
                 loader: require.resolve('css-loader'),
                 options: {
-                  importLoaders: 1
+                  importLoaders: 1,
+                  modules: true,
+                  localIdentName: '[name]__[local]___[hash:base64:5]'
+                }
+              },
+              {
+                loader: require.resolve('sass-loader'),
+                options: {
+                  data: '@import "settings.scss";',
+                  includePaths: ['src/styles']
                 }
               },
               {
@@ -124,7 +133,7 @@ module.exports = {
             ]
           },
           {
-            exclude: [/\.js$/, /\.html$/, /\.json$/, /\.svg$/],
+            exclude: [/\.js$/, /\.html$/, /\.json$/, /\.svg$/, /\.scss$/],
             loader: require.resolve('file-loader'),
             options: {
               name: 'static/media/[name].[hash:8].[ext]'

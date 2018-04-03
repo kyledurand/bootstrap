@@ -1,0 +1,9 @@
+.TopBar {
+  background: red;
+  font-size: $line-height;
+
+  &:after {
+    content: '';
+    border-right: 2px solid black;
+  }
+}
