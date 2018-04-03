@@ -1,9 +1,23 @@
 .TopBar {
-  background: red;
-  font-size: $line-height;
+  background: custom-color(topbar);
+  min-height: top-bar-height();
+  display: flex;
+  align-items: center;
+  padding: 0 spacing();
+}
 
-  &:after {
-    content: '';
-    border-right: 2px solid black;
+.NavToggle {
+  @include unstyled-button;
+  @include recolor-icon(color(white));
+  padding: spacing(tight);
+  border-radius: border-radius();
+  margin-left: -1 * spacing(extra-tight);
+
+  &:hover {
+    background-color: rgba(color(white), 0.1);
+  }
+
+  &:focus {
+    background-color: rgba(color(black), 0.1);
   }
 }

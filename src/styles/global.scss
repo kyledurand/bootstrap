@@ -1,1 +1,28 @@
-$line-height: 1.4rem;
+$top-bar-height: rem(56px);
+
+@function top-bar-height() {
+  @return $top-bar-height;
+}
+
+$custom-palette-data: (topbar: (base: rgb(28, 34, 96)));
+
+@function custom-color($hue, $value: base, $for-background: null) {
+  $fetched-color: map-get(map-get($custom-palette-data, $hue), $value);
+
+  @if map-has-key($custom-palette-data, $fetched-color) {
+    $fetched-color: map-get(
+      map-get($custom-palette-data, $fetched-color),
+      $value
+    );
+  }
+
+  @if $for-background != null {
+    $fetched-color: color-multiply($fetched-color, $for-background);
+  }
+
+  @if type-of($fetched-color) == color {
+    @return $fetched-color;
+  } @else {
+    @error 'Color `#{$hue} - #{$value}` not found. Available colors: #{available-names($custom-palette-data)}';
+  }
+}
