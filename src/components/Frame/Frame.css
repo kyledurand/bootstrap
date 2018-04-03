@@ -1,0 +1,32 @@
+.Frame {
+  text-align: center;
+}
+
+.Frame-logo {
+  animation: Frame-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.Frame-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.Frame-title {
+  font-size: 1.5em;
+}
+
+.Frame-intro {
+  font-size: large;
+}
+
+@keyframes Frame-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
