@@ -1,14 +1,43 @@
 import * as React from 'react';
 import {autobind} from 'utilities';
-import {Content, Nav, TopBar} from './components';
+import {Content, Nav, Overlay, TopBar} from './components';
 import './Frame.css';
 
-class Frame extends React.Component {
+interface State {
+  navVisible: boolean;
+  overlayVisible: boolean;
+}
+
+class Frame extends React.PureComponent<{}, State> {
+  state: State = {
+    navVisible: false,
+    overlayVisible: false,
+  };
+
   render() {
+    const {overlayVisible, navVisible} = this.state;
+
     return (
       <>
         <TopBar onNavToggle={this.handleNavToggle} />
-        <Nav />
+        <Overlay visible={overlayVisible} onClick={this.handleOverlayClick} />
+        <Nav
+          visible={navVisible}
+          items={[
+            {
+              label: 'Link 1',
+              url: 'https://link1.com',
+            },
+            {
+              label: 'Link 2',
+              url: 'https://link3.com',
+            },
+            {
+              label: 'Link 3',
+              url: 'https://link3.com',
+            },
+          ]}
+        />
         <Content />
       </>
     );
@@ -16,7 +45,12 @@ class Frame extends React.Component {
 
   @autobind
   private handleNavToggle() {
-    console.log('handle nav toggle');
+    this.setState(({overlayVisible}) => ({overlayVisible: !overlayVisible}));
+  }
+
+  @autobind
+  private handleOverlayClick() {
+    this.setState({overlayVisible: false});
   }
 }
 

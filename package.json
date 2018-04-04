@@ -6,6 +6,7 @@
     "@shopify/images": "^1.1.4",
     "@shopify/javascript-utilities": "^2.1.0",
     "@shopify/polaris": "^1.13.1",
+    "@shopify/react-utilities": "^1.2.0",
     "autoprefixer": "7.1.6",
     "awesome-typescript-loader": "^4.0.1",
     "babel-jest": "^22.1.0",
