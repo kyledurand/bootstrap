@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/.awcache
 
 # testing
 /coverage
