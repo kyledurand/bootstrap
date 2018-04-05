@@ -1,7 +1,12 @@
 $top-bar-height: rem(56px);
+$nav-width: rem(240px);
 
 @function top-bar-height() {
   @return $top-bar-height;
+}
+
+@function nav-width() {
+  @return $nav-width;
 }
 
 $custom-palette-data: (topbar: (base: rgb(28, 34, 96)));
@@ -26,3 +31,10 @@ $custom-palette-data: (topbar: (base: rgb(28, 34, 96)));
     @error 'Color `#{$hue} - #{$value}` not found. Available colors: #{available-names($custom-palette-data)}';
   }
 }
+
+$stacking-order-fixed: (
+  content: 10,
+  overlay: 15,
+  nav: 20,
+  top-bar: 25
+);

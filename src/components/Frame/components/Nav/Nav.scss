@@ -1,10 +1,11 @@
 .Nav {
   position: absolute;
   z-index: z-index(nav, $stacking-order-fixed);
+  top: top-bar-height();
   left: 0;
-  top: 0;
-  height: 100%;
-  width: rem(240px);
+  height: calc(100% - #{top-bar-height()});
+  width: nav-width();
   padding: spacing();
   background-color: color(white);
+  border-right: border();
 }
