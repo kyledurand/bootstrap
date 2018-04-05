@@ -1,0 +1,8 @@
+.Content {
+  display: block;
+  transition: padding-left duration() easing();
+}
+
+.ContentWithNav {
+  padding-left: nav-width();
+}
