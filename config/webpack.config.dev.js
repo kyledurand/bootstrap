@@ -22,7 +22,7 @@ module.exports = {
   entry: [
     require.resolve('./polyfills'),
     require.resolve('react-dev-utils/webpackHotDevClient'),
-    paths.appIndexJs
+    paths.appIndexJs,
   ],
   output: {
     pathinfo: true,
@@ -30,11 +30,11 @@ module.exports = {
     chunkFilename: 'static/js/[name].chunk.js',
     publicPath: publicPath,
     devtoolModuleFilenameTemplate: info =>
-      path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')
+      path.resolve(info.absoluteResourcePath).replace(/\\/g, '/'),
   },
   resolve: {
     modules: ['node_modules', paths.appNodeModules].concat(
-      process.env.NODE_PATH.split(path.delimiter).filter(Boolean)
+      process.env.NODE_PATH.split(path.delimiter).filter(Boolean),
     ),
     extensions: [
       '.mjs',
@@ -46,15 +46,15 @@ module.exports = {
       '.js',
       '.json',
       '.web.jsx',
-      '.jsx'
+      '.jsx',
     ],
     alias: {
-      'react-native': 'react-native-web'
+      'react-native': 'react-native-web',
     },
     plugins: [
       new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
-      new TsconfigPathsPlugin({configFile: paths.appTsConfig})
-    ]
+      new TsconfigPathsPlugin({configFile: paths.appTsConfig}),
+    ],
   },
   module: {
     strictExportPresence: true,
@@ -63,7 +63,7 @@ module.exports = {
         test: /\.(js|jsx|mjs)$/,
         loader: require.resolve('source-map-loader'),
         enforce: 'pre',
-        include: paths.appSrc
+        include: paths.appSrc,
       },
       {
         oneOf: [
@@ -72,16 +72,16 @@ module.exports = {
             loader: require.resolve('url-loader'),
             options: {
               limit: 10000,
-              name: 'static/media/[name].[hash:8].[ext]'
-            }
+              name: 'static/media/[name].[hash:8].[ext]',
+            },
           },
           {
             test: /\.(js|jsx|mjs)$/,
             include: paths.appSrc,
             loader: require.resolve('babel-loader'),
             options: {
-              compact: true
-            }
+              compact: true,
+            },
           },
           {
             test: /\.tsx?$/,
@@ -91,12 +91,12 @@ module.exports = {
               silent: true,
               useBabel: true,
               useCache: true,
-              transpileOnly: true
-            }
+              transpileOnly: true,
+            },
           },
           {
             test: /\.svg$/,
-            loader: '@shopify/images/icon-loader'
+            loader: '@shopify/images/icon-loader',
           },
           {
             test: /\.(css|scss)$/,
@@ -107,15 +107,15 @@ module.exports = {
                 options: {
                   importLoaders: 1,
                   modules: true,
-                  localIdentName: '[name]__[local]___[hash:base64:5]'
-                }
+                  localIdentName: '[name]__[local]___[hash:base64:5]',
+                },
               },
               {
                 loader: require.resolve('sass-loader'),
                 options: {
                   data: '@import "settings.scss";',
-                  includePaths: ['src/styles']
-                }
+                  includePaths: ['src/styles'],
+                },
               },
               {
                 loader: require.resolve('postcss-loader'),
@@ -125,29 +125,29 @@ module.exports = {
                     require('postcss-flexbugs-fixes'),
                     autoprefixer({
                       browsers: ['>1%', 'last 4 versions', 'Firefox ESR'],
-                      flexbox: 'no-2009'
-                    })
-                  ]
-                }
-              }
-            ]
+                      flexbox: 'no-2009',
+                    }),
+                  ],
+                },
+              },
+            ],
           },
           {
             exclude: [/\.js$/, /\.html$/, /\.json$/, /\.svg$/, /\.scss$/],
             loader: require.resolve('file-loader'),
             options: {
-              name: 'static/media/[name].[hash:8].[ext]'
-            }
-          }
-        ]
-      }
-    ]
+              name: 'static/media/[name].[hash:8].[ext]',
+            },
+          },
+        ],
+      },
+    ],
   },
   plugins: [
     new InterpolateHtmlPlugin(env.raw),
     new HtmlWebpackPlugin({
       inject: true,
-      template: paths.appHtml
+      template: paths.appHtml,
     }),
     new webpack.NamedModulesPlugin(),
     new webpack.DefinePlugin(env.stringified),
@@ -159,17 +159,17 @@ module.exports = {
       async: false,
       watch: paths.appSrc,
       tsconfig: paths.appTsConfig,
-      tslint: paths.appTsLint
-    })
+      tslint: paths.appTsLint,
+    }),
   ],
   node: {
     dgram: 'empty',
     fs: 'empty',
     net: 'empty',
     tls: 'empty',
-    child_process: 'empty'
+    child_process: 'empty',
   },
   performance: {
-    hints: false
-  }
+    hints: false,
+  },
 };
